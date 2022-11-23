@@ -56,15 +56,47 @@
 		DCA9B452291BC1DA00083DCA /* MatchLab */ = {
 			isa = PBXGroup;
 			children = (
-				DCA9B453291BC1DA00083DCA /* AppDelegate.swift */,
-				DCA9B455291BC1DA00083DCA /* SceneDelegate.swift */,
-				DCA9B459291BC1DA00083DCA /* Main.storyboard */,
-				DCA9B468291C06F400083DCA /* FeedViewController.swift */,
-				DCA9B45C291BC1DB00083DCA /* Assets.xcassets */,
-				DCA9B45E291BC1DB00083DCA /* LaunchScreen.storyboard */,
-				DCA9B461291BC1DB00083DCA /* Info.plist */,
+				DCB90368292E7A6100D62475 /* App */,
+				DCB90366292E79E300D62475 /* Feed */,
+				DCB90367292E7A2E00D62475 /* Matches */,
+				DCB90365292E797000D62475 /* Resources */,
 			);
 			path = MatchLab;
+			sourceTree = "<group>";
+		};
+		DCB90365292E797000D62475 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DCA9B45E291BC1DB00083DCA /* LaunchScreen.storyboard */,
+				DCA9B461291BC1DB00083DCA /* Info.plist */,
+				DCA9B45C291BC1DB00083DCA /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DCB90366292E79E300D62475 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DCA9B468291C06F400083DCA /* FeedViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		DCB90367292E7A2E00D62475 /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Matches;
+			sourceTree = "<group>";
+		};
+		DCB90368292E7A6100D62475 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DCA9B459291BC1DA00083DCA /* Main.storyboard */,
+				DCA9B453291BC1DA00083DCA /* AppDelegate.swift */,
+				DCA9B455291BC1DA00083DCA /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,12 +343,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 85Y7A7HSKG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MatchLab/Info.plist;
+				INFOPLIST_FILE = MatchLab/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,12 +374,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 85Y7A7HSKG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MatchLab/Info.plist;
+				INFOPLIST_FILE = MatchLab/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
