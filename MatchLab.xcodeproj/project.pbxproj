@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		DCA9B454291BC1DA00083DCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9B453291BC1DA00083DCA /* AppDelegate.swift */; };
 		DCA9B456291BC1DA00083DCA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9B455291BC1DA00083DCA /* SceneDelegate.swift */; };
-		DCA9B458291BC1DA00083DCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9B457291BC1DA00083DCA /* ViewController.swift */; };
 		DCA9B45B291BC1DA00083DCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCA9B459291BC1DA00083DCA /* Main.storyboard */; };
 		DCA9B45D291BC1DB00083DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCA9B45C291BC1DB00083DCA /* Assets.xcassets */; };
 		DCA9B460291BC1DB00083DCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCA9B45E291BC1DB00083DCA /* LaunchScreen.storyboard */; };
+		DCA9B469291C06F400083DCA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9B468291C06F400083DCA /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DCA9B450291BC1DA00083DCA /* MatchLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCA9B453291BC1DA00083DCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCA9B455291BC1DA00083DCA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DCA9B457291BC1DA00083DCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DCA9B45A291BC1DA00083DCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DCA9B45C291BC1DB00083DCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCA9B45F291BC1DB00083DCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCA9B461291BC1DB00083DCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCA9B468291C06F400083DCA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +58,8 @@
 			children = (
 				DCA9B453291BC1DA00083DCA /* AppDelegate.swift */,
 				DCA9B455291BC1DA00083DCA /* SceneDelegate.swift */,
-				DCA9B457291BC1DA00083DCA /* ViewController.swift */,
 				DCA9B459291BC1DA00083DCA /* Main.storyboard */,
+				DCA9B468291C06F400083DCA /* FeedViewController.swift */,
 				DCA9B45C291BC1DB00083DCA /* Assets.xcassets */,
 				DCA9B45E291BC1DB00083DCA /* LaunchScreen.storyboard */,
 				DCA9B461291BC1DB00083DCA /* Info.plist */,
@@ -75,6 +75,7 @@
 			buildConfigurationList = DCA9B464291BC1DB00083DCA /* Build configuration list for PBXNativeTarget "MatchLab" */;
 			buildPhases = (
 				DCA9B44C291BC1DA00083DCA /* Sources */,
+				DCA9B467291BDEBC00083DCA /* Build Tools */,
 				DCA9B44D291BC1DA00083DCA /* Frameworks */,
 				DCA9B44E291BC1DA00083DCA /* Resources */,
 			);
@@ -133,13 +134,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DCA9B467291BDEBC00083DCA /* Build Tools */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Tools";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DCA9B44C291BC1DA00083DCA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCA9B458291BC1DA00083DCA /* ViewController.swift in Sources */,
 				DCA9B454291BC1DA00083DCA /* AppDelegate.swift in Sources */,
+				DCA9B469291C06F400083DCA /* FeedViewController.swift in Sources */,
 				DCA9B456291BC1DA00083DCA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +309,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HTG9L2LEBP;
+				DEVELOPMENT_TEAM = 85Y7A7HSKG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MatchLab/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -302,9 +324,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saschasalles.matchlab.MatchLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HTG9L2LEBP;
+				DEVELOPMENT_TEAM = 85Y7A7HSKG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MatchLab/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,9 +355,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saschasalles.matchlab.MatchLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
