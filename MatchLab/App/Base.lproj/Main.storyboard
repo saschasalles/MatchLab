@@ -39,7 +39,7 @@
         <!--MatchesViewController-->
         <scene sceneID="tIG-lH-81n">
             <objects>
-                <viewController id="e9a-xM-Bhj" userLabel="MatchesViewController" sceneMemberID="viewController">
+                <viewController id="e9a-xM-Bhj" userLabel="MatchesViewController" customClass="MatchesViewController" customModule="MatchLab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rWX-2Q-tOl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,6 +153,7 @@
                         <outlet property="descriptionLabel" destination="QmV-dZ-w4X" id="ca2-x0-Rno"/>
                         <outlet property="imageView" destination="fq4-rr-8mw" id="4QR-ne-TNu"/>
                         <outlet property="matchButton" destination="4T0-pO-ly2" id="ZYZ-xm-wht"/>
+                        <outlet property="refuseButton" destination="USv-hY-sJW" id="v84-Wp-sdo"/>
                         <outlet property="titleLabel" destination="ocb-9g-iEF" id="YEJ-Ah-ttJ"/>
                     </connections>
                 </viewController>
