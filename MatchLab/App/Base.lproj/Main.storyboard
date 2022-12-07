@@ -27,7 +27,7 @@
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
-                        <segue destination="e9a-xM-Bhj" kind="relationship" relationship="viewControllers" id="FE9-tW-Ly5"/>
+                        <segue destination="3bw-00-WEN" kind="relationship" relationship="viewControllers" id="FE9-tW-Ly5"/>
                         <segue destination="PaP-iB-Ohd" kind="relationship" relationship="viewControllers" id="l6x-LA-Kak"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="R0Q-N5-mZ2"/>
                     </connections>
@@ -46,13 +46,11 @@
                         <viewLayoutGuide key="safeArea" id="sgK-EJ-AbN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Matches" id="hbc-WA-dD6">
-                        <imageReference key="image" image="heart.square.fill" catalog="system" renderingMode="template"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="PyO-GM-Ini"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fch-lk-M0M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-689" y="-393"/>
+            <point key="canvasLocation" x="307.5" y="-394.01408450704224"/>
         </scene>
         <!--FeedViewController-->
         <scene sceneID="XBl-1f-WAd">
@@ -159,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJC-aQ-eht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180" y="-395.07042253521126"/>
+            <point key="canvasLocation" x="1177.5" y="-395.07042253521126"/>
         </scene>
         <!--ProfileViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -188,7 +186,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="-393"/>
+            <point key="canvasLocation" x="2115" y="-394.01408450704224"/>
+        </scene>
+        <!--Matches-->
+        <scene sceneID="WR3-0c-chc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3bw-00-WEN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Matches" id="hbc-WA-dD6">
+                        <imageReference key="image" image="heart.square.fill" catalog="system" renderingMode="template"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rKb-aK-Tgg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e9a-xM-Bhj" kind="relationship" relationship="rootViewController" id="H1J-xO-HaW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBP-Mo-Edo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-690" y="-394.01408450704224"/>
         </scene>
     </scenes>
     <resources>

@@ -34,11 +34,12 @@ final class FeedViewController: UIViewController {
     // MARK: - UI Methods
 
     @IBAction private func didTapRefuseButton(_ sender: Any) {
-        nextProfile(matched: false)
+        nextProfile()
     }
 
     @IBAction private func didTapMatchButton(_ sender: Any) {
-        nextProfile(matched: true)
+        matchProfile()
+        nextProfile()
     }
 
     deinit {
@@ -52,7 +53,7 @@ final class FeedViewController: UIViewController {
 
         print(#function, self)
         configureUI()
-        nextProfile(matched: false)
+        nextProfile()
     }
 
     // MARK: - Private Methods
@@ -70,37 +71,23 @@ final class FeedViewController: UIViewController {
         bannerView.layer.cornerCurve = .continuous
     }
 
-    private func nextProfile(matched: Bool) {
+    private func nextProfile() {
         guard !profiles.isEmpty, count < profiles.count else {
             userDidReachEnd()
             return
         }
 
         let profile = profiles[count]
-        UIView.transition(
-            with: imageView,
-            duration: 0.4,
-            options: .transitionFlipFromBottom,
-            animations: { [weak self] in
-                self?.imageView.image = UIImage(named: profile.imageName)
-            }
-        )
 
-        UIView.transition(
-            with: bannerView,
-            duration: 0.35,
-            options: .transitionCrossDissolve,
-            animations: { [weak self] in
-                self?.titleLabel.text = profile.name
-                self?.descriptionLabel.text = profile.description
-            }
-        )
-
+        imageView.image = UIImage(named: profile.imageName)
         titleLabel.text = profile.name
         descriptionLabel.text = profile.description
-        profile.setMatched(matched)
-
         count += 1
+    }
+
+    func matchProfile() {
+        guard !profiles.isEmpty else { return }
+        profiles[count - 1].setMatched(true)
     }
 
     private func userDidReachEnd() {
@@ -113,7 +100,6 @@ final class FeedViewController: UIViewController {
                 self?.imageView.contentMode = .scaleAspectFit
             }
         )
-
 
         matchButton.isEnabled = false
         refuseButton.isEnabled = false
