@@ -14,34 +14,67 @@ struct ProfileInfoView: View {
     var dismissAction: () -> Void
 
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 15) {
             HStack {
                 Spacer()
                 Button {
                     dismissAction()
                 } label: {
-                    Image(systemName: "xmark")
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.title)
                 }
             }
-            .padding()
-
 
             Image(profile.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 200, height: 200)
                 .cornerRadius(10)
+                .padding(.bottom)
 
             Text(profile.name)
                 .font(.title)
 
             Text(profile.description)
                 .font(.headline)
+                .multilineTextAlignment(.center)
 
             Spacer()
         }
-        .background(Material.ultraThinMaterial)
+        .padding(.horizontal, 20)
+        .padding(.top, 60)
+        .background(
+            VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
+        )
+        .edgesIgnoringSafeArea(.all)
+
     }
+
+}
+
+@available(iOS 13.0, *)
+public struct VisualEffectView: UIViewRepresentable {
+
+    // MARK: Private Properties
+
+    private var effect: UIVisualEffect?
+
+    // MARK: Init
+
+    public init(effect: UIVisualEffect? = nil) {
+        self.effect = effect
+    }
+
+    // MARK: Public API
+
+    public func makeUIView(context: UIViewRepresentableContext<Self>) -> UIVisualEffectView {
+        UIVisualEffectView()
+    }
+
+    public func updateUIView(_ uiView: UIVisualEffectView, context: UIViewRepresentableContext<Self>) {
+        uiView.effect = effect
+    }
+
 }
 
 final class ProfileInfoViewController: UIViewController {
@@ -61,9 +94,12 @@ final class ProfileInfoViewController: UIViewController {
         super.viewDidLoad()
 
         let hostingController = UIHostingController(
-            rootView: ProfileInfoView(profile: profile, dismissAction: {
-                self.dismiss(animated: true)
-            })
+            rootView: ProfileInfoView(
+                profile: profile,
+                dismissAction: { [weak self] in
+                    self?.dismiss(animated: true)
+                }
+            )
         )
 
         let rootView = hostingController.view as UIView

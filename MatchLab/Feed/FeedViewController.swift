@@ -61,9 +61,10 @@ final class FeedViewController: UIViewController {
     private func configureUI() {
         containerStackView.layer.cornerRadius = 20
         containerStackView.clipsToBounds = true
-        containerStackView.layer.cornerCurve = .circular
+        containerStackView.layer.cornerCurve = .continuous
 
         imageView.layer.cornerRadius = 20
+        imageView.layer.cornerCurve = .continuous
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .systemGray6
         bannerView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]

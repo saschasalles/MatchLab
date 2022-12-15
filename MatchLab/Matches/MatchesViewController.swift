@@ -91,11 +91,12 @@ extension MatchesViewController: UITableViewDataSource {
 
 extension MatchesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let profile = profiles[indexPath.row]
         let profileInfoViewController = ProfileInfoViewController(profile: profile)
 
-        profileInfoViewController.modalTransitionStyle = .flipHorizontal
-        profileInfoViewController.modalPresentationStyle = .overCurrentContext
+        profileInfoViewController.modalPresentationStyle = .overFullScreen
+        profileInfoViewController.modalTransitionStyle = .crossDissolve
 
         present(profileInfoViewController, animated: true)
     }
