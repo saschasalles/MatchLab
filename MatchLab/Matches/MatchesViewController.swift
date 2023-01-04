@@ -187,13 +187,33 @@ extension MatchesViewController: UICollectionViewDataSource {
 
         switch currentMode {
         case .list:
-            let cell = collectionView.dequeueReusableCell(
+            guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MatchesListCollectionViewCell.reuseIdentifier,
                 for: indexPath
-            ) as? MatchesListCollectionViewCell
+            ) as? MatchesListCollectionViewCell else {
+                return UICollectionViewCell()
+            }
 
-            cell?.configure(profile: profile)
-            return cell ?? UICollectionViewCell()
+            if profile == profiles.first {
+                cell.contentView.layer.maskedCorners = [
+                    .layerMinXMinYCorner,
+                    .layerMaxXMinYCorner
+                ]
+                cell.contentView.layer.cornerRadius = 12
+                cell.contentView.layer.cornerCurve = .continuous
+            } else if profile == profiles.last {
+                cell.contentView.layer.maskedCorners = [
+                    .layerMinXMaxYCorner,
+                    .layerMaxXMaxYCorner
+                ]
+                cell.contentView.layer.cornerCurve = .continuous
+                cell.contentView.layer.cornerRadius = 12
+            } else {
+                cell.contentView.layer.cornerRadius = 0
+            }
+
+            cell.configure(profile: profile)
+            return cell
 
         case .grid:
             let cell = collectionView.dequeueReusableCell(

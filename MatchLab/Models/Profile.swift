@@ -45,6 +45,7 @@ final class Profile {
         self.imageName = imageName
     }
 
+    let id = UUID()
     let name: String
     let imageName: String
     let description: String
@@ -53,5 +54,11 @@ final class Profile {
 
     func setMatched(_ matched: Bool) {
         self.wasMatched = matched
+    }
+}
+
+extension Profile: Equatable {
+    static func == (lhs: Profile, rhs: Profile) -> Bool {
+        lhs.id == rhs.id
     }
 }
