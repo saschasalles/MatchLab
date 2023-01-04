@@ -40,10 +40,10 @@ final class MatchesViewController: UIViewController {
             forCellWithReuseIdentifier: MatchesGridCollectionViewCell.reuseIdentifier
         )
 
+        collectionView.backgroundColor = .systemGroupedBackground
         collectionView.alwaysBounceVertical = true
         collectionView.dataSource = self
-
-//        collectionView.delegate = self
+        collectionView.delegate = self
 
         return collectionView
     }()
@@ -89,10 +89,7 @@ final class MatchesViewController: UIViewController {
 // MARK: - CollectionViewDataSource
 
 extension MatchesViewController: UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return profiles.count
     }
 
@@ -113,34 +110,20 @@ extension MatchesViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - TableViewDelegate
+// MARK: - CollectionViewDelegate
 
-//extension MatchesViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let profile = profiles[indexPath.row]
-//        let profileInfoViewController = ProfileInfoViewController(profile: profile)
-//
-//        profileInfoViewController.modalPresentationStyle = .overFullScreen
-//        profileInfoViewController.modalTransitionStyle = .crossDissolve
-//
-//        present(profileInfoViewController, animated: true)
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 55
-//    }
-//
-//    func tableView(
-//        _ tableView: UITableView,
-//        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-//    ) -> UISwipeActionsConfiguration? {
-//        UISwipeActionsConfiguration(actions: [
-//            UIContextualAction(style: .destructive, title: "Remove by Gass", handler: { [weak self] _, _, _ in
-//                guard let self else { return }
-//                let profileName = self.profiles[indexPath.row].name
-//                self.profiles = self.profiles.filter({ $0.name != profileName })
-//            })
-//        ])
-//    }
-//}
+extension MatchesViewController: UICollectionViewDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let profile = profiles[indexPath.row]
+        let profileInfoViewController = ProfileInfoViewController(profile: profile)
+
+        profileInfoViewController.modalPresentationStyle = .overFullScreen
+        profileInfoViewController.modalTransitionStyle = .crossDissolve
+
+        present(profileInfoViewController, animated: true)
+    }
+}

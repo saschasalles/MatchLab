@@ -41,7 +41,7 @@ class MatchesGridCollectionViewCell: UICollectionViewCell {
     private func configureUI() {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
-        contentView.backgroundColor = .tertiarySystemGroupedBackground
+        contentView.backgroundColor = .secondarySystemGroupedBackground
         contentView.layer.cornerRadius = 12
         contentView.layer.cornerCurve = .continuous
 
@@ -50,16 +50,18 @@ class MatchesGridCollectionViewCell: UICollectionViewCell {
 
         titleLabel.sizeToFit()
 
+        let padding: CGFloat = 10
+
         NSLayoutConstraint.activate([
             imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.75),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
 
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
         ])
     }
 
