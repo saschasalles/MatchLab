@@ -29,8 +29,8 @@ final class MatchesViewController: UIViewController {
     private var currentMode: PresentationMode = .list {
         didSet {
             guard currentMode != oldValue else { return }
-
             setBarButtonItem()
+            updateCollectionViewLayout()
         }
     }
 
@@ -89,15 +89,39 @@ final class MatchesViewController: UIViewController {
         return layout
     }()
 
+    private lazy var listLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: view.frame.width - padding * 2, height: 70)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 10, left: padding, bottom: 10, right: padding)
+
+        return layout
+    }()
+
+    private func updateCollectionViewLayout() {
+        collectionView.reloadSections([0])
+
+        collectionView.setCollectionViewLayout(
+            currentMode == .list ? listLayout : gridLayout,
+            animated: false
+        )
+    }
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: .zero,
-            collectionViewLayout: gridLayout
+            collectionViewLayout: listLayout
         )
 
         collectionView.register(
             MatchesGridCollectionViewCell.self,
             forCellWithReuseIdentifier: MatchesGridCollectionViewCell.reuseIdentifier
+        )
+
+        collectionView.register(
+            MatchesListCollectionViewCell.self,
+            forCellWithReuseIdentifier: MatchesListCollectionViewCell.reuseIdentifier
         )
 
         collectionView.backgroundColor = .systemGroupedBackground
@@ -159,15 +183,27 @@ extension MatchesViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: MatchesGridCollectionViewCell.reuseIdentifier,
-            for: indexPath
-        ) as? MatchesGridCollectionViewCell
-
         let profile = profiles[indexPath.row]
-        cell?.configure(profile: profile)
 
-        return cell ?? UICollectionViewCell()
+        switch currentMode {
+        case .list:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: MatchesListCollectionViewCell.reuseIdentifier,
+                for: indexPath
+            ) as? MatchesListCollectionViewCell
+
+            cell?.configure(profile: profile)
+            return cell ?? UICollectionViewCell()
+
+        case .grid:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: MatchesGridCollectionViewCell.reuseIdentifier,
+                for: indexPath
+            ) as? MatchesGridCollectionViewCell
+
+            cell?.configure(profile: profile)
+            return cell ?? UICollectionViewCell()
+        }
     }
 }
 
