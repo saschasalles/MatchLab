@@ -45,13 +45,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DC2B064F2940720B00AA45AD /* ProfileInfo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProfileInfo;
-			sourceTree = "<group>";
-		};
 		DC2B065C2940D6BC00AA45AD /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				DC2B065C2940D6BC00AA45AD /* Models */,
-				DC2B064F2940720B00AA45AD /* ProfileInfo */,
 				DCB90368292E7A6100D62475 /* App */,
 				DCB90366292E79E300D62475 /* Feed */,
 				DCB90367292E7A2E00D62475 /* Matches */,
