@@ -11,13 +11,73 @@ final class MatchesViewController: UIViewController {
 
     // MARK: - Private Properties
 
+    // MARK: Data
+
     private var profiles: [Profile]! {
         didSet {
             collectionView.reloadData()
         }
     }
 
-    let padding: CGFloat = 16
+    // MARK: Navigation
+
+    private enum PresentationMode {
+        case list
+        case grid
+    }
+
+    private var currentMode: PresentationMode = .list {
+        didSet {
+            guard currentMode != oldValue else { return }
+
+            setBarButtonItem()
+        }
+    }
+
+    private let listImage = UIImage(systemName: "list.bullet")
+
+    private let gridImage = UIImage(systemName: "square.grid.2x2")
+
+    private func setBarButtonItem() {
+        let item = UIBarButtonItem(
+            image: currentMode == .list ? listImage : gridImage,
+            primaryAction: nil,
+            menu: makeMenu()
+        )
+
+        navigationItem.rightBarButtonItem = item
+    }
+
+    private func makeMenu() -> UIMenu {
+        let actions: [UIAction] = [
+            UIAction(
+                title: "List",
+                state: currentMode == .list ? .on : .off,
+                handler: { [weak self] _ in
+                    self?.currentMode = .list
+                }
+            ),
+            UIAction(
+                title: "Grid",
+                state: currentMode == .grid ? .on : .off,
+                handler: { [weak self] _ in
+                    self?.currentMode = .grid
+                }
+            )
+        ]
+
+        let menu = UIMenu(
+            title: "Display Mode",
+            image: nil,
+            children: actions
+        )
+
+        return menu
+    }
+
+    // MARK: Collection View
+
+    private let padding: CGFloat = 16
 
     private lazy var gridLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -70,6 +130,7 @@ final class MatchesViewController: UIViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Matches"
+        setBarButtonItem()
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
