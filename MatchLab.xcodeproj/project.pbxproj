@@ -17,6 +17,7 @@
 		DCA9B45D291BC1DB00083DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCA9B45C291BC1DB00083DCA /* Assets.xcassets */; };
 		DCA9B460291BC1DB00083DCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCA9B45E291BC1DB00083DCA /* LaunchScreen.storyboard */; };
 		DCA9B469291C06F400083DCA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9B468291C06F400083DCA /* FeedViewController.swift */; };
+		DCE4A5B2296591F200223D3C /* MatchesGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE4A5B1296591F200223D3C /* MatchesGridCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DCA9B45F291BC1DB00083DCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCA9B461291BC1DB00083DCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCA9B468291C06F400083DCA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		DCE4A5B1296591F200223D3C /* MatchesGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesGridCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		DCB90367292E7A2E00D62475 /* Matches */ = {
 			isa = PBXGroup;
 			children = (
+				DCE4A5B32965922600223D3C /* Cells */,
 				DC2B06572940CB5200AA45AD /* MatchesView.swift */,
 				DC2B065A2940CF4700AA45AD /* MatchesViewController.swift */,
 				DC2B065F2940FAA900AA45AD /* ProfileInfoViewController.swift */,
@@ -117,6 +120,14 @@
 				DCA9B455291BC1DA00083DCA /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		DCE4A5B32965922600223D3C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DCE4A5B1296591F200223D3C /* MatchesGridCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCE4A5B2296591F200223D3C /* MatchesGridCollectionViewCell.swift in Sources */,
 				DC2B065B2940CF4700AA45AD /* MatchesViewController.swift in Sources */,
 				DC2B06602940FAA900AA45AD /* ProfileInfoViewController.swift in Sources */,
 				DCA9B454291BC1DA00083DCA /* AppDelegate.swift in Sources */,

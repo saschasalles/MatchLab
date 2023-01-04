@@ -13,20 +13,39 @@ final class MatchesViewController: UIViewController {
 
     private var profiles: [Profile]! {
         didSet {
-            tableView.reloadData()
+            collectionView.reloadData()
         }
     }
 
-    private let cellReuseIdentifier = "matchedProfileCellReuseIdentifier"
+    let padding: CGFloat = 16
 
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+    private lazy var gridLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: view.frame.width / 2 - padding * 2, height: 180)
+        layout.minimumInteritemSpacing = padding
+        layout.minimumLineSpacing = padding
+        layout.sectionInset = UIEdgeInsets(top: 10, left: padding, bottom: 10, right: padding)
 
-        tableView.dataSource = self
-        tableView.delegate = self
+        return layout
+    }()
 
-        return tableView
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: gridLayout
+        )
+
+        collectionView.register(
+            MatchesGridCollectionViewCell.self,
+            forCellWithReuseIdentifier: MatchesGridCollectionViewCell.reuseIdentifier
+        )
+
+        collectionView.alwaysBounceVertical = true
+        collectionView.dataSource = self
+
+//        collectionView.delegate = self
+
+        return collectionView
     }()
 
     // MARK: - LifeCycle
@@ -41,24 +60,24 @@ final class MatchesViewController: UIViewController {
         super.viewDidAppear(animated)
 
         profiles = getMatchedProfiles()
-        tableView.reloadData()
+        collectionView.reloadData()
     }
 
     // MARK: - Private Methods
 
     private func configureUI() {
-        view.addSubview(tableView)
+        view.addSubview(collectionView)
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Matches"
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
     }
 
@@ -67,54 +86,61 @@ final class MatchesViewController: UIViewController {
     }
 }
 
-// MARK: - TableViewDataSource
+// MARK: - CollectionViewDataSource
 
-extension MatchesViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MatchesViewController: UICollectionViewDataSource {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return profiles.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) else {
-            return UITableViewCell()
-        }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MatchesGridCollectionViewCell.reuseIdentifier,
+            for: indexPath
+        ) as? MatchesGridCollectionViewCell
 
         let profile = profiles[indexPath.row]
-        cell.textLabel?.text = profile.name
+        cell?.configure(profile: profile)
 
-        return cell
+        return cell ?? UICollectionViewCell()
     }
 }
 
 // MARK: - TableViewDelegate
 
-extension MatchesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let profile = profiles[indexPath.row]
-        let profileInfoViewController = ProfileInfoViewController(profile: profile)
-
-        profileInfoViewController.modalPresentationStyle = .overFullScreen
-        profileInfoViewController.modalTransitionStyle = .crossDissolve
-
-        present(profileInfoViewController, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-    ) -> UISwipeActionsConfiguration? {
-        UISwipeActionsConfiguration(actions: [
-            UIContextualAction(style: .destructive, title: "Remove by Gass", handler: { [weak self] _, _, _ in
-                guard let self else { return }
-                let profileName = self.profiles[indexPath.row].name
-                self.profiles = self.profiles.filter({ $0.name != profileName })
-            })
-        ])
-    }
-}
+//extension MatchesViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        let profile = profiles[indexPath.row]
+//        let profileInfoViewController = ProfileInfoViewController(profile: profile)
+//
+//        profileInfoViewController.modalPresentationStyle = .overFullScreen
+//        profileInfoViewController.modalTransitionStyle = .crossDissolve
+//
+//        present(profileInfoViewController, animated: true)
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 55
+//    }
+//
+//    func tableView(
+//        _ tableView: UITableView,
+//        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+//    ) -> UISwipeActionsConfiguration? {
+//        UISwipeActionsConfiguration(actions: [
+//            UIContextualAction(style: .destructive, title: "Remove by Gass", handler: { [weak self] _, _, _ in
+//                guard let self else { return }
+//                let profileName = self.profiles[indexPath.row].name
+//                self.profiles = self.profiles.filter({ $0.name != profileName })
+//            })
+//        ])
+//    }
+//}
